@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration - Responsive</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    h2 {
+      margin: 20px 0;
+      color: #444;
+      text-align: center;
+    }
+
+    /* ================= TABLE ================= */
+    .table-container {
+      overflow-x: auto;
+      margin-bottom: 30px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      min-width: 600px;
+    }
+
+    th {
+      background: #480ceb;
+      color: white;
+      padding: 12px;
+    }
+
+    td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* ================= FORM ================= */
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: aqua;
+    }
+
+    .gender {
+      display: flex;
+      gap: 15px;
+      margin: 10px 0;
+      flex-wrap: wrap;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .submit {
+      background: #22c55e;
+      color: white;
+    }
+
+    .reset {
+      background: #ef4444;
+      color: white;
+    }
+
+    .msg {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+
+      .form-container {
+        width: 100%;
+        padding: 15px;
+      }
+
+      table {
+        min-width: 500px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      h2 {
+        font-size: 18px;
+      }
+
+      table {
+        min-width: 450px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Student Registration System</h1>
+
+<!-- ================= TABLE ================= -->
+<h2>Student Table</h2>
+
+<div class="table-container">
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Course</th>
+    <th>Mobile</th>
+    <th>Email</th>
+  </tr>
+
+  <tr>
+    <td>sai</td>
+    <td>React JS</td>
+    <td>9876543210</td>
+    <td>sai@gmail.com</td>
+  </tr>
+
+  <tr>
+    <td>Srikanth</td>
+    <td>HTML</td>
+    <td>9123456780</td>
+    <td>srikanth@gmail.com</td>
+  </tr>
+
+  <!-- NEW STUDENT 1 -->
+  <tr>
+    <td>praveen</td>
+    <td>JavaScript</td>
+    <td>9988776655</td>
+    <td>praveen@gmail.com</td>
+  </tr>
+
+  <!-- NEW STUDENT 2 -->
+  <tr>
+    <td>Priya</td>
+    <td>CSS</td>
+    <td>9012345678</td>
+    <td>priya@gmail.com</td>
+  </tr>
+</table>
+</div>
+
+<!-- ================= FORM ================= -->
+<div class="form-container">
+
+  <h2>Registration Form</h2>
+
+  <label>Full Name</label>
+  <input type="text" id="name" placeholder="Enter Full Name">
+
+  <label>Email</label>
+  <input type="email" id="email" placeholder="Enter Email">
+
+  <label>Phone</label>
+  <input type="tel" id="phone" placeholder="Enter Phone Number">
+
+  <label>Gender</label>
+  <div class="gender">
+    <label><input type="radio" name="gender" value="Male"> Male</label>
+    <label><input type="radio" name="gender" value="Female"> Female</label>
+    <label><input type="radio" name="gender" value="Other"> Other</label>
+  </div>
+
+  <label>Course</label>
+  <select id="course">
+    <option value="">Select Course</option>
+    <option>HTML</option>
+    <option>CSS</option>
+    <option>JavaScript</option>
+    <option>React JS</option>
+  </select>
+
+  <label>Address</label>
+  <textarea id="address" rows="3" placeholder="Enter Address"></textarea>
+
+  <div class="buttons">
+    <button class="submit" onclick="submitForm()">Submit</button>
+    <button class="reset" onclick="resetForm()">Reset</button>
+  </div>
+
+  <div class="msg" id="msg"></div>
+
+</div>
+
+<!-- ================= JS ================= -->
+<script>
+
+  function submitForm() {
+
+    let name = document.getElementById("name").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let course = document.getElementById("course").value;
+    let address = document.getElementById("address").value.trim();
+
+    let gender = document.querySelector('input[name="gender"]:checked');
+
+    // FULL NAME VALIDATION
+    if (name === "") {
+      showMsg("⚠ Please enter full name", "red");
+      document.getElementById("name").focus();
+      return;
+    }
+
+    // EMAIL VALIDATION
+    if (email === "") {
+      showMsg("⚠ Please enter email address", "red");
+      document.getElementById("email").focus();
+      return;
+    }
+
+    // PHONE VALIDATION
+    if (phone === "") {
+      showMsg("⚠ Please enter phone number", "red");
+      document.getElementById("phone").focus();
+      return;
+    }
+
+    // GENDER VALIDATION
+    if (!gender) {
+      showMsg("⚠ Please select gender", "red");
+      return;
+    }
+
+    // COURSE VALIDATION
+    if (course === "") {
+      showMsg("⚠ Please select course", "red");
+      document.getElementById("course").focus();
+      return;
+    }
+
+    // ADDRESS VALIDATION
+    if (address === "") {
+      showMsg("⚠ Please enter address", "red");
+      document.getElementById("address").focus();
+      return;
+    }
+
+    // SUCCESS MESSAGE
+    showMsg("✅ Registration Successful!", "green");
+
+    console.log({
+      name,
+      email,
+      phone,
+      gender: gender.value,
+      course,
+      address
+    });
+
+    // AUTO RESET AFTER SUCCESS
+    setTimeout(() => {
+      resetForm();
+    }, 2000);
+  }
+
+  // RESET FORM
+  function resetForm() {
+
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("course").value = "";
+    document.getElementById("address").value = "";
+
+    document.querySelectorAll('input[name="gender"]').forEach(el => {
+      el.checked = false;
+    });
+
+    showMsg("", "");
+  }
+
+  // MESSAGE FUNCTION
+  function showMsg(text, color) {
+
+    let m = document.getElementById("msg");
+
+    m.innerText = text;
+    m.style.color = color;
+  }
+
+</script>
+
+</body>
+</html>
