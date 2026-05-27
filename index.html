@@ -1,214 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Student Registration - Responsive</title>
+<meta charset="UTF-8">
+<title>Student Registration System</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef2f7;
-      padding: 20px;
-    }
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 20px;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
+/* TITLE */
+h1 {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
 
-    h2 {
-      margin: 20px 0;
-      color: #444;
-      text-align: center;
-    }
+/* ================= TABLE CARD ================= */
+.table-container {
+  max-width: 900px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 
-    /* ================= TABLE ================= */
-    .table-container {
-      overflow-x: auto;
-      margin-bottom: 30px;
-    }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      background: white;
-      min-width: 600px;
-    }
+th {
+  background: #4f46e5;
+  color: white;
+  padding: 12px;
+}
 
-    th {
-      background: #480ceb;
-      color: white;
-      padding: 12px;
-    }
+td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
 
-    td {
-      padding: 12px;
-      text-align: center;
-      border-bottom: 1px solid #ddd;
-    }
+/* ================= FORM CARD ================= */
+.form-container {
+  max-width: 500px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
 
-    /* ================= FORM ================= */
-    .form-container {
-      max-width: 600px;
-      margin: auto;
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
 
-    label {
-      font-weight: bold;
-      margin-top: 10px;
-      display: block;
-    }
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
 
-    input, select, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      outline: none;
-    }
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
 
-    input:focus, select:focus, textarea:focus {
-      border-color: aqua;
-    }
+input:focus, select:focus, textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 5px rgba(79,70,229,0.3);
+}
 
-    .gender {
-      display: flex;
-      gap: 15px;
-      margin: 10px 0;
-      flex-wrap: wrap;
-    }
+/* GENDER */
+.gender {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
 
-    .buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
+/* BUTTONS */
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
 
-    button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
 
-    .submit {
-      background: #22c55e;
-      color: white;
-    }
+.submit {
+  background: #22c55e;
+  color: white;
+}
 
-    .reset {
-      background: #ef4444;
-      color: white;
-    }
+.reset {
+  background: #ef4444;
+  color: white;
+}
 
-    .msg {
-      text-align: center;
-      margin-top: 15px;
-      font-weight: bold;
-    }
+/* MESSAGE */
+.msg {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
 
-    /* ================= RESPONSIVE ================= */
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
-      }
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .buttons {
+    flex-direction: column;
+  }
 
-      .form-container {
-        width: 100%;
-        padding: 15px;
-      }
-
-      table {
-        min-width: 500px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 20px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
-
-      table {
-        min-width: 450px;
-      }
-    }
-  </style>
+  .form-container {
+    width: 95%;
+  }
+}
+</style>
 </head>
 
 <body>
 
-<h1>Student Registration System</h1>
+<h1>Student Management System</h1>
 
 <!-- ================= TABLE ================= -->
-<h2>Student Table</h2>
-
 <div class="table-container">
   <table>
-  <tr>
-    <th>Name</th>
-    <th>Course</th>
-    <th>Mobile</th>
-    <th>Email</th>
-  </tr>
+    <tr>
+      <th>Name</th>
+      <th>Course</th>
+      <th>Mobile</th>
+      <th>Email</th>
+    </tr>
 
-  <tr>
-    <td>sai</td>
-    <td>React JS</td>
-    <td>9876543210</td>
-    <td>sai@gmail.com</td>
-  </tr>
+    <tr>
+      <td>John</td>
+      <td>React JS</td>
+      <td>9876543210</td>
+      <td>john@gmail.com</td>
+    </tr>
 
-  <tr>
-    <td>Srikanth</td>
-    <td>HTML</td>
-    <td>9123456780</td>
-    <td>srikanth@gmail.com</td>
-  </tr>
+    <tr>
+      <td>Sarah</td>
+      <td>HTML</td>
+      <td>9123456780</td>
+      <td>sarah@gmail.com</td>
+    </tr>
 
-  <!-- NEW STUDENT 1 -->
-  <tr>
-    <td>praveen</td>
-    <td>JavaScript</td>
-    <td>9988776655</td>
-    <td>praveen@gmail.com</td>
-  </tr>
+    <tr>
+      <td>Arjun</td>
+      <td>JavaScript</td>
+      <td>9988776655</td>
+      <td>arjun@gmail.com</td>
+    </tr>
 
-  <!-- NEW STUDENT 2 -->
-  <tr>
-    <td>Priya</td>
-    <td>CSS</td>
-    <td>9012345678</td>
-    <td>priya@gmail.com</td>
-  </tr>
-</table>
+    <tr>
+      <td>Priya</td>
+      <td>CSS</td>
+      <td>9012345678</td>
+      <td>priya@gmail.com</td>
+    </tr>
+
+  </table>
 </div>
 
 <!-- ================= FORM ================= -->
 <div class="form-container">
 
-  <h2>Registration Form</h2>
+  <h2>Student Registration Form</h2>
 
   <label>Full Name</label>
   <input type="text" id="name" placeholder="Enter Full Name">
@@ -249,101 +233,53 @@
 
 <!-- ================= JS ================= -->
 <script>
+function submitForm() {
 
-  function submitForm() {
+  let name = document.getElementById("name").value.trim();
+  let email = document.getElementById("email").value.trim();
+  let phone = document.getElementById("phone").value.trim();
+  let course = document.getElementById("course").value;
+  let address = document.getElementById("address").value.trim();
+  let gender = document.querySelector('input[name="gender"]:checked');
 
-    let name = document.getElementById("name").value.trim();
-    let email = document.getElementById("email").value.trim();
-    let phone = document.getElementById("phone").value.trim();
-    let course = document.getElementById("course").value;
-    let address = document.getElementById("address").value.trim();
+  if (name === "") return showMsg("⚠ Please enter full name", "red");
+  if (email === "") return showMsg("⚠ Please enter email", "red");
+  if (phone === "") return showMsg("⚠ Please enter phone number", "red");
+  if (!gender) return showMsg("⚠ Please select gender", "red");
+  if (course === "") return showMsg("⚠ Please select course", "red");
+  if (address === "") return showMsg("⚠ Please enter address", "red");
 
-    let gender = document.querySelector('input[name="gender"]:checked');
+  showMsg("✅ Registration Successful!", "green");
 
-    // FULL NAME VALIDATION
-    if (name === "") {
-      showMsg("⚠ Please enter full name", "red");
-      document.getElementById("name").focus();
-      return;
-    }
+  console.log({
+    name,
+    email,
+    phone,
+    gender: gender.value,
+    course,
+    address
+  });
 
-    // EMAIL VALIDATION
-    if (email === "") {
-      showMsg("⚠ Please enter email address", "red");
-      document.getElementById("email").focus();
-      return;
-    }
+  setTimeout(resetForm, 1500);
+}
 
-    // PHONE VALIDATION
-    if (phone === "") {
-      showMsg("⚠ Please enter phone number", "red");
-      document.getElementById("phone").focus();
-      return;
-    }
+function resetForm() {
+  document.getElementById("name").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("phone").value = "";
+  document.getElementById("course").value = "";
+  document.getElementById("address").value = "";
 
-    // GENDER VALIDATION
-    if (!gender) {
-      showMsg("⚠ Please select gender", "red");
-      return;
-    }
+  document.querySelectorAll('input[name="gender"]').forEach(e => e.checked = false);
 
-    // COURSE VALIDATION
-    if (course === "") {
-      showMsg("⚠ Please select course", "red");
-      document.getElementById("course").focus();
-      return;
-    }
+  showMsg("", "");
+}
 
-    // ADDRESS VALIDATION
-    if (address === "") {
-      showMsg("⚠ Please enter address", "red");
-      document.getElementById("address").focus();
-      return;
-    }
-
-    // SUCCESS MESSAGE
-    showMsg("✅ Registration Successful!", "green");
-
-    console.log({
-      name,
-      email,
-      phone,
-      gender: gender.value,
-      course,
-      address
-    });
-
-    // AUTO RESET AFTER SUCCESS
-    setTimeout(() => {
-      resetForm();
-    }, 2000);
-  }
-
-  // RESET FORM
-  function resetForm() {
-
-    document.getElementById("name").value = "";
-    document.getElementById("email").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("course").value = "";
-    document.getElementById("address").value = "";
-
-    document.querySelectorAll('input[name="gender"]').forEach(el => {
-      el.checked = false;
-    });
-
-    showMsg("", "");
-  }
-
-  // MESSAGE FUNCTION
-  function showMsg(text, color) {
-
-    let m = document.getElementById("msg");
-
-    m.innerText = text;
-    m.style.color = color;
-  }
-
+function showMsg(text, color) {
+  let msg = document.getElementById("msg");
+  msg.innerText = text;
+  msg.style.color = color;
+}
 </script>
 
 </body>
